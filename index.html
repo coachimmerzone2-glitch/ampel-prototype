@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<title>Ampel Reporting Prototype</title>
+<style>
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    background: #fff;
+    color: #000;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .top-bar {
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+  }
+
+  select {
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 14px;
+    border: 1px solid #000;
+    background: #fff;
+    color: #000;
+  }
+
+  .logo {
+    width: 90px;
+    margin-bottom: 20px;
+  }
+
+  .ampel-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 20px;
+    width: 140px;
+  }
+
+  .light {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 2px solid #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    text-align: center;
+    padding: 10px;
+  }
+
+  #green { background: #2ecc71; }
+  #yellow { background: #f1c40f; }
+  #red { background: #e74c3c; }
+
+  textarea {
+    width: 100%;
+    max-width: 600px;
+    height: 140px;
+    border-radius: 10px;
+    padding: 12px;
+    font-size: 15px;
+    border: 1px solid #000;
+    resize: none;
+    display: none;
+  }
+
+  .visible { display: block; }
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <select id="language-select">
+    <option value="de">DE</option>
+    <option value="en">EN</option>
+  </select>
+</div>
+
+<img class="logo" src="1._FC_Passau_logo.svg.png" alt="Club Logo" />
+
+<div class="ampel-container">
+  <div class="light" id="green">☺<br/><span>Läuft gut</div>
+  <div class="light" id="yellow">?<br/><span>Ich bin mir unsicher</div>
+  <div class="light" id="red">⚡<br/><span>Das ist schlecht</div>
+</div>
+
+<textarea id="input-field" placeholder="Bitte hier eingeben..."></textarea>
+
+<script>
+  const inputField = document.getElementById("input-field");
+  const showInput = () => inputField.classList.add("visible");
+
+  document.getElementById("green").addEventListener("click", showInput);
+  document.getElementById("yellow").addEventListener("click", showInput);
+  document.getElementById("red").addEventListener("click", showInput);
+</script>
+
+</body>
+</html>
